@@ -18,7 +18,7 @@
 
     <ion-content color="primary">
       <!-- <ion-row> -->
-        <swiper>
+      <swiper>
         <swiper-slide>
           <ion-label>
             <span>Total Balance</span>
@@ -48,20 +48,18 @@
             <span>9123134130</span>
           </ion-label>
         </swiper-slide>
-       
       </swiper>
       <!-- </ion-row> -->
-
     </ion-content>
   </ion-page>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Swiper, SwiperSlide } from "swiper/vue";
 
-import 'swiper/css';
-import '@ionic/vue/css/ionic-swiper.css'
+import "swiper/css";
+import "@ionic/vue/css/ionic-swiper.css";
 
 import {
   IonPage,
@@ -85,7 +83,35 @@ export default defineComponent({
     IonText,
     IonAvatar,
     Swiper,
-    SwiperSlide
+    SwiperSlide,
   },
 });
 </script>
+
+<style lang="scss">
+ion-toolbar {
+  --padding-start: 16px;
+  --padding-end: 16px;
+
+  ion-title {
+    max-width: 40vh;
+
+    ion-label {
+      ion-text {
+        font-size: 1rem;
+      }
+      p {
+        ion-text {
+          font-size: 1.3rem !important;
+        }
+      }
+    }
+  }
+
+  ion-avatar {
+    height: 2.5rem;
+    width: 2.5rem;
+    border: 1px solid var(--ion-color-tertiary);
+  }
+}
+</style>

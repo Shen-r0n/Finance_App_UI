@@ -23,10 +23,8 @@
 /* import 'swiper/css to import the wholte bundle you don't have to import pagination and navigation if you have import the whole Swiper CSS bundle */
 
 @import 'swiper/css';
-
-/* @import 'swiper/css/pagination';
-@import 'swiper/css/navigation'; */
-
+@import 'swiper/css/pagination';
+@import 'swiper/css/navigation';
 .swiper-pagination-bullet {
     background: rgba(255, 255, 255, 0.33);
     opacity: 1;

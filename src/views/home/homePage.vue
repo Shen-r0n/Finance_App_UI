@@ -2,7 +2,7 @@
   <ion-page>
     <ion-header class="ion-no-border">
       <ion-toolbar color="primary">
-        <ion-title class="ion-no-padding">
+        <ion-title class="ion-no-padding" mode="md">
           <ion-label>
             <ion-text color="tertiary">Welcome</ion-text>
             <p>
@@ -19,40 +19,75 @@
     <ion-content color="primary">
       <ion-row class="banners">
         <swiper>
-          <!-- <div> -->
-          <swiper-slide>
+          <swiper-slide v-for="account in accounts" :key="account.id">
+            <!-- <div> -->
             <ion-label>
-              <span>Total Balance</span>
-              <p class="acc-amt">
-                <ion-text color="white">Rs 400231300</ion-text>
-              </p>
-              <span>4800080</span>
+              <span>Total Balance</span><br />
+              <!-- <p class="acc-amt">
+                  <ion-text color="white">Rs {{ payment.balance }}</ion-text>
+                </p> -->
+              <span
+                ><p class="acc-amt">Rs. {{ account.balance }}</p></span
+              >
+              <span>{{ account.accountNumber }}</span>
             </ion-label>
+            <!-- </div> -->
           </swiper-slide>
-
-          <swiper-slide>
-            <ion-label>
-              <span>Total Balance</span>
-              <p class="acc-amt">
-                <ion-text color="white">Rs 352345123</ion-text>
-              </p>
-              <span>324143080</span>
-            </ion-label>
-          </swiper-slide>
-
-          <swiper-slide>
-            <ion-label>
-              <span>Total Balance</span>
-              <p class="acc-amt">
-                <ion-text color="white">Rs 80232000</ion-text>
-              </p>
-              <span>9123134130</span>
-            </ion-label>
-          </swiper-slide>
-          <!-- </div> -->
         </swiper>
       </ion-row>
-      
+
+      <ion-row class="ion-text-center feature-list">
+        <swiper :slides-per-view="3.5">
+          <swiper-slide v-for="feature in features" :key="feature.id">
+            <div>
+              <ion-button :color="feature.color">
+                <!-- <ion-icon slot="start" :icon="feature.icon"></ion-icon> -->
+                <ion-icon slot="end" :icon="cardOutline"></ion-icon>
+              </ion-button>
+              <ion-label>{{ feature.name }}</ion-label>
+            </div>
+          </swiper-slide>
+        </swiper>
+      </ion-row>
+
+      <ion-list class="transactions">
+        <ion-list-header>
+          <ion-label color="medium">Transactions</ion-label>
+        </ion-list-header>
+
+        <ion-item-group>
+          <ion-item
+            lines="full"
+            v-for="transaction in transactions"
+            :key="transaction.id"
+          >
+            <ion-thumbnail slot="start" class="ion-text-center">
+              <img v-if="transaction.amount>=0"
+               src="assets/imgs/up-right.png"
+              />
+              <img v-if="transaction.amount<0"
+               src="assets/imgs/down-left-arrow.png"
+              />
+
+            </ion-thumbnail>
+            <ion-label>
+              <ion-text>{{ transaction.to }}</ion-text>
+              <p>
+                <ion-text>
+                  {{ transaction.date }}
+                </ion-text>
+              </p>
+            </ion-label>
+            <ion-text slot="end" color="primary">
+              {{
+                transaction.amount >= 0
+                  ? "Rs " + transaction.amount
+                  : "-Rs " + transaction.amount * -1
+              }}
+            </ion-text>
+          </ion-item>
+        </ion-item-group>
+      </ion-list>
     </ion-content>
   </ion-page>
 </template>
@@ -60,10 +95,18 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
-
-import "swiper/css";
+import { Navigation } from "swiper";
+import "swiper/css/pagination";
+// import "swiper/css";
 import "@ionic/vue/css/ionic-swiper.css";
 
+import {
+  homeOutline,
+  swapHorizontalOutline,
+  cardOutline,
+  settingsOutline,
+} from "ionicons/icons";
+import * as icon from "ionicons/icons";
 import {
   IonPage,
   IonToolbar,
@@ -74,16 +117,20 @@ import {
   IonText,
   IonAvatar,
   IonRow,
+  IonButton,
+  IonList,
+  IonItem,
+  IonListHeader,
+  IonItemGroup,
+  IonThumbnail,
 } from "@ionic/vue";
 
 export default defineComponent({
-  
-  
   components: {
     IonPage,
     IonToolbar,
-    IonHeader,
     IonTitle,
+    IonHeader,
     IonLabel,
     IonContent,
     IonText,
@@ -91,14 +138,107 @@ export default defineComponent({
     Swiper,
     SwiperSlide,
     IonRow,
+    IonButton,
+    IonList,
+    IonItem,
+    IonListHeader,
+    IonItemGroup,
+    IonThumbnail,
   },
 
-  
+  setup() {
+    return {
+      homeOutline,
+      swapHorizontalOutline,
+      cardOutline,
+      settingsOutline,
+    };
+  },
+  data() {
+    return {
+      accounts: [
+        {
+          id: 1,
+          accountNumber: 123467890,
+          balance: 10000,
+        },
+        {
+          id: 4,
+          accountNumber: 1234567009,
+          balance: 40000,
+        },
+        {
+          id: 2,
+          accountNumber: 12345670009,
+          balance: 20000,
+        },
+        {
+          id: 3,
+          accountNumber: 1234567800,
+          balance: 30000,
+        },
+      ],
 
+      features: [
+        {
+          id: 1,
+          color: "white",
+          icon: "swap-horizontal-outline",
+          name: "Send",
+        },
+        {
+          id: 2,
+          color: "danger",
+          icon: "homeOutline",
+          name: "Send",
+        },
+        {
+          id: 3,
+          color: "warning",
+          icon: "cardOutline",
+          name: "Send",
+        },
+        {
+          id: 4,
+          color: "primary",
+          icon: "settingsOutline",
+          name: "Send",
+        },
+      ],
+
+      transactions: [
+        {
+          id: 1,
+          to: "Shenron Crest",
+          date: "2022-05-22",
+          amount: 5000,
+        },
+        {
+          id: 2,
+          to: "loerem Crest",
+          date: "2022-05-22",
+          amount: 5000,
+        },
+        {
+          id: 3,
+          to: "logan Crest",
+          date: "2022-05-22",
+          amount: -1000,
+        },
+        {
+          id: 4,
+          to: "Rukia Crest",
+          date: "2022-05-22",
+          amount: -2000,
+        },
+      ],
+    };
+  },
 });
 </script>
 
 <style lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap");
 ion-toolbar {
   --padding-start: 16px;
   --padding-end: 16px;
@@ -141,32 +281,67 @@ ion-content {
     border-radius: 2.5rem;
     margin: 6vh 1rem 0 1rem;
 
-    swiper {
-      swiper-slide {
-        ion-label {
-          p.acc-amt {
-            font-size: 3rem;
-            margin: 1rem 0;
-            font-weight: 700;
-          }
-        }
+    span {
+      p.acc-amt {
+        margin: 2rem 0;
+        font-size: 3rem;
+        font-weight: 700;
       }
+    }
+    // p.acc-amt {
+    //   ion-text {
+    //     margin: 1rem 0;
+    //     font-size: 3rem;
+    //     font-weight: 700;
+    //   }
+    // }
+  }
+}
+//
+ion-row.banners::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  bottom: 1px;
+  background: #194648;
+  border-radius: 2.5rem;
+  z-index: 0;
+  border: 2px solid transparent;
+}
+
+ion-row.feature-list {
+  padding: 5vh 0;
+  div {
+    display: flex;
+    // flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    ion-button {
+      --border-radius: 15px;
+      height: 8vh;
+    }
+    ion-label {
+      font-size: 1rem;
     }
   }
 }
 
+ion-list.transactions {
+  border-radius: 8vh 8vh 0 0;
+  background: var(--ion-color-secondary);
+  padding-bottom: 10vh;
+  ion-list-header {
+    padding-inline-start: 4.5vh;
+  }
 
-ion-row.banners::after{
-  content: "";
-  position: absolute;
-  top:1px;
-  left:1px;
-  right:1px;
-  bottom:1px;
-  background: #194648;
-  border-radius: 2.5rem;
-  z-index:0;
-  border: 2px solid transparent;
-
+  ion-list-header,
+  ion-item {
+    ion-label {
+      font-size: 1.1rem;
+    }
+  }
 }
 </style>

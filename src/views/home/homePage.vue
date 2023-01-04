@@ -62,19 +62,21 @@
             :key="transaction.id"
           >
             <ion-thumbnail slot="start" class="ion-text-center">
-              <img v-if="transaction.amount>=0"
-               src="assets/imgs/up-right.png"
+              <img
+                v-if="transaction.amount >= 0"
+                src="assets/imgs/up-right.png"
               />
-              <img v-if="transaction.amount<0"
-               src="assets/imgs/down-left-arrow.png"
+              <img
+                v-if="transaction.amount < 0"
+                src="assets/imgs/down-left-arrow.png"
               />
-
             </ion-thumbnail>
             <ion-label>
               <ion-text>{{ transaction.to }}</ion-text>
               <p>
                 <ion-text>
                   {{ transaction.date }}
+                  <!--  {{ transaction.date | date: 'MMM DD, YYYY'} -->
                 </ion-text>
               </p>
             </ion-label>
@@ -82,7 +84,7 @@
               {{
                 transaction.amount >= 0
                   ? "Rs " + transaction.amount
-                  : "-Rs " + transaction.amount * -1
+                  : "- Rs " + transaction.amount * -1
               }}
             </ion-text>
           </ion-item>
@@ -188,21 +190,21 @@ export default defineComponent({
         },
         {
           id: 2,
-          color: "danger",
+          color: "success",
           icon: "homeOutline",
-          name: "Send",
+          name: "Get",
         },
         {
           id: 3,
           color: "warning",
           icon: "cardOutline",
-          name: "Send",
+          name: "Put",
         },
         {
           id: 4,
-          color: "primary",
+          color: "dark",
           icon: "settingsOutline",
-          name: "Send",
+          name: "Post",
         },
       ],
 
@@ -317,8 +319,8 @@ ion-row.feature-list {
     display: flex;
     // flex-direction: column;
     align-items: center;
-    align-content: center;
-    justify-content: center;
+    // align-content: center;
+    // justify-content: center;
     ion-button {
       --border-radius: 15px;
       height: 8vh;
@@ -341,6 +343,42 @@ ion-list.transactions {
   ion-item {
     ion-label {
       font-size: 1.1rem;
+    }
+  }
+}
+
+ion-item-group {
+  padding: 0 3.5vh;
+  ion-item {
+    font-weight: bold;
+    --background: transparent;
+    --border-style: dashed;
+    // --border-color: var(--ion-color-tertiary);
+    --padding-bottom: 1rem;
+    --padding-top: 1rem;
+    --padding-start: 0;
+
+    ion-text [slot="end"] {
+      font-size: 1rem;
+    }
+    p {
+      font-size: 0.1rem;
+      font-weight: normal;
+      margin-top: 1px;
+      opacity: 0.8;
+    }
+
+    ion-thumbnail {
+      height: 6vh;
+      width: 6vh;
+      border-radius: 10px;
+      background: var(--ion-color-white);
+      box-shadow: 0px 3px 6px rgb(3 181 170 / 4%);
+      img {
+        height: 4vh;
+        width: 4vh;
+        transform: translateY(25%);
+      }
     }
   }
 }

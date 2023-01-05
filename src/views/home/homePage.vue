@@ -340,7 +340,7 @@ ion-list.transactions {
     margin-top: 1.5vh;
     margin-bottom: -1.5vh;
     font-weight: 500;
-}
+  }
 
   ion-list-header,
   ion-item {

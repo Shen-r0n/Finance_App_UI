@@ -102,6 +102,8 @@ import "swiper/css/pagination";
 // import "swiper/css";
 import "@ionic/vue/css/ionic-swiper.css";
 
+import store from "@/store/index"
+
 import {
   homeOutline,
   swapHorizontalOutline,
@@ -158,6 +160,8 @@ export default defineComponent({
   },
   data() {
     return {
+      transactions: store.getters.getTransaction,
+
       accounts: [
         {
           id: 1,
@@ -208,32 +212,7 @@ export default defineComponent({
         },
       ],
 
-      transactions: [
-        {
-          id: 1,
-          to: "Shenron Crest",
-          date: "2022-05-22",
-          amount: 5000,
-        },
-        {
-          id: 2,
-          to: "loerem Crest",
-          date: "2022-05-22",
-          amount: 5000,
-        },
-        {
-          id: 3,
-          to: "logan Crest",
-          date: "2022-05-22",
-          amount: -1000,
-        },
-        {
-          id: 4,
-          to: "Rukia Crest",
-          date: "2022-05-22",
-          amount: -2000,
-        },
-      ],
+      
     };
   },
 });

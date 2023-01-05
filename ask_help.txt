@@ -2,4 +2,4 @@ homepage.vue line 78 dateformat
 
 swiper bullet not working
 
-transaction vue page ma kasari vaule tanyo homepage script ko array haru ko data in video too homepage.ts ko data kasari transaction ma use garyo?
+

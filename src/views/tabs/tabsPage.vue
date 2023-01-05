@@ -94,6 +94,7 @@ ion-tab-bar{
   overflow: hidden;
   box-shadow: 0px -5px 10px rgb(3 181 170 / 8%);
   height: 60px;
+  /* bottom: 5px; */
   /* background: var(--icon-color-light); */
   
 }

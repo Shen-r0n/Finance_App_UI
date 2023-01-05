@@ -76,6 +76,8 @@
         </ion-item>
       </ion-item-group>
     </ion-list>
+
+    <!-- <ion-button @click="addtransaction">add transaction</ion-button> -->
   </ion-page>
 </template>
 
@@ -122,6 +124,14 @@ export default defineComponent({
       this.inflow = data;
       console.log("inflow:::", this.inflow);
     },
+    addtransaction(){
+      store.dispatch("addtransaction",{id:5,to:"ramey",date:"2032-02-11",amount:90000},
+      )
+      .then(data=>{console.log(data);})
+      .catch(err=>{
+        console.log(err);
+      })
+    }
   },
 });
 </script>
@@ -138,6 +148,10 @@ ion-header {
       }
     }
   }
+}
+
+ion-button{
+  margin-bottom: 10vh;
 }
 
   

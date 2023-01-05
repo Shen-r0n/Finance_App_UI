@@ -336,8 +336,11 @@ ion-list.transactions {
   background: var(--ion-color-secondary);
   padding-bottom: 10vh;
   ion-list-header {
-    padding-inline-start: 4.5vh;
-  }
+    padding-inline-start: 5.5vh;
+    margin-top: 1.5vh;
+    margin-bottom: -1.5vh;
+    font-weight: 500;
+}
 
   ion-list-header,
   ion-item {

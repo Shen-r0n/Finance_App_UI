@@ -301,7 +301,7 @@ ion-row.feature-list {
     // align-content: center;
     // justify-content: center;
     ion-button {
-      --border-radius: 15px;
+      --border-radius: 15px  ; 
       height: 8vh;
     }
     ion-label {

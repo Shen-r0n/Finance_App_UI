@@ -34,7 +34,7 @@
         </ion-item>
       </ion-list>
 
-      <ion-button fill="clear" class="ion-margin" color="danger">
+      <ion-button fill="clear" class="ion-margin button-lowercase" color="danger">
         <ion-icon :icon="logOut" slot="start"></ion-icon>LogOut
       </ion-button>
     </ion-content>
@@ -43,7 +43,15 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { IonPage, IonToolbar, IonHeader, IonTitle } from "@ionic/vue";
+import { IonPage, IonToolbar, IonHeader, IonTitle,
+IonContent,
+IonAvatar,
+IonLabel,
+IonList,
+IonItem,
+IonIcon,
+IonToggle,
+IonButton, } from "@ionic/vue";
 
 import {
   homeOutline,
@@ -60,6 +68,14 @@ export default defineComponent({
     IonToolbar,
     IonHeader,
     IonTitle,
+    IonContent,
+    IonAvatar,
+    IonLabel,
+    IonList,
+    IonItem,
+    IonIcon,
+    IonToggle,
+    IonButton,
   },
 
   setup() {
@@ -100,7 +116,7 @@ ion-content {
     ion-item {
       --background: transparent;
       --border-style: dashed;
-      --border-color: var(--ion-color-tertiary);
+      // --border-color: var(--ion-color-tertiary);
       --padding-bottom: 0.5rem;
       --padding-top: 0.5rem;
       --padding-start: 0;
@@ -111,5 +127,10 @@ ion-content {
       }
     }
   }
+
+  .button-lowercase{
+text-transform: capitalize;  
+font-weight: 3 00;
+}
 }
 </style>

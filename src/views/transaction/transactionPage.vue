@@ -5,17 +5,17 @@
         <ion-title color="primary"> Transaction </ion-title>
       </ion-toolbar>
       <ion-toolbar>
-        <ion-segment mode="ios">
-          <ion-segment-button @click="changeInFlow(true)">
+        <ion-segment mode="ios" value="inFlow">
+          <ion-segment-button value="inFlow" @click="changeInFlow(true)">
             <ion-label> In-flow </ion-label>
           </ion-segment-button>
-          <ion-segment-button @click="changeInFlow(false)">
+          <ion-segment-button value="outFlow" @click="changeInFlow(false)">
             <ion-label> Out-flow </ion-label>
           </ion-segment-button>
         </ion-segment>
       </ion-toolbar>
     </ion-header>
-    
+
     <ion-list class="transactions">
       <ion-item-group v-for="transaction in transactions" :key="transaction.id">
         <ion-item lines="full" v-if="inflow && transaction.amount >= 0">
@@ -124,14 +124,21 @@ export default defineComponent({
       this.inflow = data;
       console.log("inflow:::", this.inflow);
     },
-    addtransaction(){
-      store.dispatch("addtransaction",{id:5,to:"ramey",date:"2032-02-11",amount:90000},
-      )
-      .then(data=>{console.log(data);})
-      .catch(err=>{
-        console.log(err);
-      })
-    }
+    addtransaction() {
+      store
+        .dispatch("addtransaction", {
+          id: 5,
+          to: "ramey",
+          date: "2032-02-11",
+          amount: 90000,
+        })
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
 });
 </script>
@@ -150,9 +157,7 @@ ion-header {
   }
 }
 
-ion-button{
+ion-button {
   margin-bottom: 10vh;
 }
-
-  
 </style>

@@ -57,6 +57,7 @@
           </ion-item>
         </ion-item-group>
       </ion-list>
+      
     </ion-content>
   </ion-page>
 </template>
@@ -72,6 +73,11 @@ import {
   IonLabel,
   IonText,
   IonContent,
+  IonToggle,
+  IonItem,
+  IonItemGroup,
+  IonList,
+  
 } from "@ionic/vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css/pagination";
@@ -90,6 +96,11 @@ export default defineComponent({
     IonLabel,
     IonText,
     IonContent,
+    IonToggle,
+    IonItem,
+    IonItemGroup,
+    IonList,
+    
   },
   data() {
     return {

@@ -18,7 +18,13 @@
 
     <ion-content color="primary">
       <ion-row class="banners">
-        <swiper>
+        <swiper
+        
+          :modules="modules"
+          :space-between="30"
+          navigation
+          :pagination="{ clickable: true,  }"
+        >
           <swiper-slide v-for="account in accounts" :key="account.id">
             <!-- <div> -->
             <ion-label>
@@ -29,7 +35,7 @@
               <span
                 ><p class="acc-amt">Rs. {{ account.balance }}</p></span
               >
-              <span>{{ account.accountNumber }}</span>
+              <span><p>{{ account.accountNumber }}</p></span>
             </ion-label>
             <!-- </div> -->
           </swiper-slide>
@@ -41,8 +47,8 @@
           <swiper-slide v-for="feature in features" :key="feature.id">
             <div>
               <ion-button :color="feature.color">
-                <!-- <ion-icon slot="start" :icon="feature.icon"></ion-icon> -->
-                <ion-icon slot="end" :icon="cardOutline"></ion-icon>
+                <ion-icon slot="start" :icon="feature.icon"></ion-icon>
+                <!-- <ion-icon slot="end" :icon="settingsOutline"></ion-icon> -->
               </ion-button>
               <ion-label>{{ feature.name }}</ion-label>
             </div>
@@ -64,11 +70,11 @@
             <ion-thumbnail slot="start" class="ion-text-center">
               <img
                 v-if="transaction.amount >= 0"
-                src="assets/imgs/up-right.png"
+                src="assets/imgs/down-left-arrow.png"
               />
               <img
                 v-if="transaction.amount < 0"
-                src="assets/imgs/down-left-arrow.png"
+                src="assets/imgs/up-right.png"
               />
             </ion-thumbnail>
             <ion-label>
@@ -97,12 +103,12 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { Navigation } from "swiper";
+import { Navigation, Pagination, Scrollbar } from "swiper";
 import "swiper/css/pagination";
 // import "swiper/css";
 import "@ionic/vue/css/ionic-swiper.css";
 
-import store from "@/store/index"
+import store from "@/store/index";
 
 import {
   homeOutline,
@@ -110,7 +116,7 @@ import {
   cardOutline,
   settingsOutline,
 } from "ionicons/icons";
-import * as icon from "ionicons/icons";
+
 import {
   IonPage,
   IonToolbar,
@@ -127,6 +133,7 @@ import {
   IonListHeader,
   IonItemGroup,
   IonThumbnail,
+  IonIcon,
 } from "@ionic/vue";
 
 export default defineComponent({
@@ -148,6 +155,7 @@ export default defineComponent({
     IonListHeader,
     IonItemGroup,
     IonThumbnail,
+    IonIcon,
   },
 
   setup() {
@@ -156,6 +164,7 @@ export default defineComponent({
       swapHorizontalOutline,
       cardOutline,
       settingsOutline,
+      modules: [Navigation, Pagination],
     };
   },
   data() {
@@ -189,7 +198,7 @@ export default defineComponent({
         {
           id: 1,
           color: "white",
-          icon: "swap-horizontal-outline",
+          icon: "swapHorizontalOutline",
           name: "Send",
         },
         {
@@ -211,8 +220,6 @@ export default defineComponent({
           name: "Post",
         },
       ],
-
-      
     };
   },
 });
@@ -264,11 +271,12 @@ ion-content {
 
     span {
       p.acc-amt {
-        margin: 2rem 0;
+        margin: 1.5rem 0;
         font-size: 3rem;
         font-weight: 700;
       }
     }
+    
     // p.acc-amt {
     //   ion-text {
     //     margin: 1rem 0;
@@ -301,7 +309,7 @@ ion-row.feature-list {
     // align-content: center;
     // justify-content: center;
     ion-button {
-      --border-radius: 15px  ; 
+      --border-radius: 15px;
       height: 8vh;
     }
     ion-label {
@@ -362,6 +370,8 @@ ion-item-group {
         transform: translateY(25%);
       }
     }
+    
   }
+
 }
 </style>

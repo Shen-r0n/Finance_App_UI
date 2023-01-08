@@ -1,37 +1,58 @@
-/* Core CSS required for Ionic components to work properly */
-
-@import '@ionic/vue/css/core.css';
-
-/* Basic CSS for apps built with Ionic */
-
-@import '@ionic/vue/css/normalize.css';
-@import '@ionic/vue/css/structure.css';
-@import '@ionic/vue/css/typography.css';
-
-/* Optional CSS utils that can be commented out */
-
-@import '@ionic/vue/css/padding.css';
-@import '@ionic/vue/css/float-elements.css';
-@import '@ionic/vue/css/text-alignment.css';
-@import '@ionic/vue/css/text-transformation.css';
-@import '@ionic/vue/css/flex-utils.css';
-@import '@ionic/vue/css/display.css';
-
-/* Importing Swiper CSS bundle */
-
-
-/* import 'swiper/css to import the wholte bundle you don't have to import pagination and navigation if you have import the whole Swiper CSS bundle */
-
-@import 'swiper/css';
-@import 'swiper/css/pagination';
-@import 'swiper/css/navigation';
-.swiper-pagination-bullet {
-    background: rgba(255, 255, 255, 0.33);
-    opacity: 1;
-}
-
-.swiper-pagination-bullet-active {
-    background-color: var(--ion-color-white) !important;
-    width: 40px;
-    border-radius: 4px;
-}
+    /* Core CSS required for Ionic components to work properly */
+    
+    @import '@ionic/vue/css/core.css';
+    /* Basic CSS for apps built with Ionic */
+    
+    @import '@ionic/vue/css/normalize.css';
+    @import '@ionic/vue/css/structure.css';
+    @import '@ionic/vue/css/typography.css';
+    /* Optional CSS utils that can be commented out */
+    
+    @import '@ionic/vue/css/padding.css';
+    @import '@ionic/vue/css/float-elements.css';
+    @import '@ionic/vue/css/text-alignment.css';
+    @import '@ionic/vue/css/text-transformation.css';
+    @import '@ionic/vue/css/flex-utils.css';
+    @import '@ionic/vue/css/display.css';
+    /* Importing Swiper CSS bundle */
+    /* import 'swiper/css to import the wholte bundle you don't have to import pagination and navigation if you have import the whole Swiper CSS bundle */
+    
+    @import 'swiper/css';
+    @import 'swiper/css/pagination';
+    @import 'swiper/css/navigation';
+    .swiper-pagination-bullet {
+        background: rgba(255, 255, 255, 0.33);
+        opacity: 1;
+    }
+    
+    .swiper-pagination-bullet-active {
+        background-color: var(--ion-color-white) !important;
+        width: 30px;
+        border-radius: 4px;
+    }
+    
+    div .swiper-button-next {
+        color: red;
+        background-image: url(/public/assets/imgs/arrow-right.svg);
+        background-size: 100% auto;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-right: -1.4vh;
+    }
+    
+    .swiper-button-next::after {
+        display: none;
+    }
+    
+    div.swiper-button-prev {
+        color: red;
+        background-image: url(/public/assets/imgs/arrow-left.svg);
+        background-size: 100% auto;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-left: -1.4vh;
+    }
+    
+    .swiper-button-prev::after {
+        display: none;
+    }

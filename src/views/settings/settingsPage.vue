@@ -16,6 +16,7 @@
       <ion-list>
         <ion-item lines="full">
           <ion-icon slot="start" :icon="notificationsOutline"></ion-icon>
+
           <ion-label> Push Notifications </ion-label>
           <ion-toggle slot="end" :checked="true"></ion-toggle>
         </ion-item>
@@ -34,7 +35,11 @@
         </ion-item>
       </ion-list>
 
-      <ion-button fill="clear" class="ion-margin button-lowercase" color="danger">
+      <ion-button
+        fill="clear"
+        class="ion-margin button-lowercase"
+        color="danger"
+      >
         <ion-icon :icon="logOut" slot="start"></ion-icon>LogOut
       </ion-button>
     </ion-content>
@@ -43,15 +48,20 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { IonPage, IonToolbar, IonHeader, IonTitle,
-IonContent,
-IonAvatar,
-IonLabel,
-IonList,
-IonItem,
-IonIcon,
-IonToggle,
-IonButton, } from "@ionic/vue";
+import {
+  IonPage,
+  IonToolbar,
+  IonHeader,
+  IonTitle,
+  IonContent,
+  IonAvatar,
+  IonLabel,
+  IonList,
+  IonItem,
+  IonIcon,
+  IonToggle,
+  IonButton,
+} from "@ionic/vue";
 
 import {
   homeOutline,
@@ -128,9 +138,9 @@ ion-content {
     }
   }
 
-  .button-lowercase{
-text-transform: capitalize;  
-font-weight: 3 00;
-}
+  .button-lowercase {
+    text-transform: capitalize;
+    font-weight: 3 00;
+  }
 }
 </style>

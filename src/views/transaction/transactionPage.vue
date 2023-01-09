@@ -134,7 +134,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 ion-header {
   ion-toolbar {
     --background: var(--ion-color-secondary);

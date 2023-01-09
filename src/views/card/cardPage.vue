@@ -15,15 +15,15 @@
         >
           <swiper-slide v-for="card in cards" :key="card.id">
             <div class="card-details">
-              <img :src="card.company_img" class="logo"/>
+              <img :src="card.company_img" class="logo" />
               <div align="center">
                 <ion-label>
                   <div class="acc-amt">
                     <ion-text color="white">
                       {{ card.card_no }}
-                    </ion-text></div>
-                    <span>{{ card.card_holder }}</span>
-                  
+                    </ion-text>
+                  </div>
+                  <span>{{ card.card_holder }}</span>
                 </ion-label>
               </div>
               <p class="exp ion-text-start">
@@ -38,26 +38,21 @@
 
       <ion-list class="transactions">
         <ion-list-header>
-          <ion-label color="medium">Settings</ion-label> 
+          <ion-label color="medium">Settings</ion-label>
         </ion-list-header>
 
         <ion-item-group>
           <ion-item lines="full">
-            <ion-label>
-              Enable Card
-            </ion-label>
+            <ion-label> Enable Card </ion-label>
             <ion-toggle slot="end" :checked="true"></ion-toggle>
           </ion-item>
         </ion-item-group>
         <ion-item-group>
           <ion-item lines="full" detail>
-            <ion-label>
-              Change Pin
-            </ion-label>
+            <ion-label> Change Pin </ion-label>
           </ion-item>
         </ion-item-group>
       </ion-list>
-      
     </ion-content>
   </ion-page>
 </template>
@@ -77,7 +72,6 @@ import {
   IonItem,
   IonItemGroup,
   IonList,
-  
 } from "@ionic/vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css/pagination";
@@ -100,7 +94,6 @@ export default defineComponent({
     IonItem,
     IonItemGroup,
     IonList,
-    
   },
   data() {
     return {
@@ -132,7 +125,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 ion-content {
   .bg-circle {
     position: absolute;
@@ -146,19 +139,19 @@ ion-content {
 }
 ion-row {
   margin: 5vh 1rem 6vh 1rem;
-  
+
   height: 37vh;
   div.card-details {
     height: 40vh;
-    width:50vh;
+    width: 50vh;
     border-radius: 2.5rem;
     padding: 0 1.5rem;
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(30px);
     border: 2px solid rgba(127, 212, 168, 0.2);
-    
-    img.logo{
-      display:flex;
+
+    img.logo {
+      display: flex;
       // align-self: start;
       align-self: flex-start;
       width: 2.5rem;

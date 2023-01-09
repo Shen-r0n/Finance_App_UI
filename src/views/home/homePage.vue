@@ -46,10 +46,11 @@
       <ion-row class="ion-text-center feature-list">
         <swiper :slides-per-view="3.5">
           <swiper-slide v-for="feature in features" :key="feature.id">
-            <div>
+            <div class="feature-col">
               <ion-button :color="feature.color">
+                <font-awesome-icon :icon="feature.icon" />
                 <!-- <font-awesome-icon :icon="['fas', 'HatWizard']"></font-awesome-icon> -->
-                <fa icon="HatWizard"></fa>
+                <!-- <fa icon="HatWizard"></fa> -->
                 <!-- <ion-icon slot="end" :icon="settingsOutline"></ion-icon> -->
               </ion-button>
               <ion-label>{{ feature.name }}</ion-label>
@@ -105,7 +106,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { Navigation, Pagination, Scrollbar } from "swiper";
+import { Navigation, Pagination } from "swiper";
 import "swiper/css/pagination";
 // import "swiper/css";
 import "@ionic/vue/css/ionic-swiper.css";
@@ -197,28 +198,29 @@ export default defineComponent({
       features: [
         {
           id: 1,
-          color: "white",
-          icon: "swapHorizontalOutline",
+          color: "tertiary",
+          icon: " fa-solid fa-paper-plane",
           name: "Send",
         },
         {
           id: 2,
-          color: "success",
-          icon: "homeOutline",
-          name: "Get",
+          color: "tertiary",
+          icon: "fa-solid fa-fast-forward",
+          name: "Request",
         },
         {
           id: 3,
-          color: "warning",
-          icon: "cardOutline",
-          name: "Put",
+          color: "tertiary",
+          icon: "fa-brands fa-facebook",
+          name: "Top-Up",
         },
         {
           id: 4,
-          color: "dark",
-          icon: "settingsOutline",
-          name: "Post",
+          color: "tertiary",
+          icon: "fa-solid fa-file-invoice-dollar",
+          name: "Bills",
         },
+       
       ],
     };
   },
@@ -302,18 +304,26 @@ ion-row.banners::after {
 
 ion-row.feature-list {
   padding: 5vh 0;
-  div {
-    display: flex;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  div.feature-col {
+    // display: flex;
     // flex-direction: column;
-    align-items: center;
+    // align-items:center;
+    flex-basis: 25%;
+    text-align: center;
     // align-content: center;
     // justify-content: center;
     ion-button {
       --border-radius: 15px;
-      height: 8vh;
+      padding-bottom: 5px;
+      height: 7vh;
+      width: 7vh;
     }
     ion-label {
       font-size: 1rem;
+      
     }
   }
 }

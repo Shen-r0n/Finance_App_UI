@@ -19,11 +19,10 @@
     <ion-content color="primary">
       <ion-row class="banners">
         <swiper
-        
           :modules="modules"
           :space-between="30"
           navigation
-          :pagination="{ clickable: true,  }"
+          :pagination="{ clickable: true }"
         >
           <swiper-slide v-for="account in accounts" :key="account.id">
             <!-- <div> -->
@@ -35,7 +34,9 @@
               <span
                 ><p class="acc-amt">Rs. {{ account.balance }}</p></span
               >
-              <span><p>{{ account.accountNumber }}</p></span>
+              <span
+                ><p>{{ account.accountNumber }}</p></span
+              >
             </ion-label>
             <!-- </div> -->
           </swiper-slide>
@@ -47,7 +48,8 @@
           <swiper-slide v-for="feature in features" :key="feature.id">
             <div>
               <ion-button :color="feature.color">
-                <ion-icon slot="start" :icon="feature.icon"></ion-icon>
+                <!-- <font-awesome-icon :icon="['fas', 'HatWizard']"></font-awesome-icon> -->
+                <fa icon="HatWizard"></fa>
                 <!-- <ion-icon slot="end" :icon="settingsOutline"></ion-icon> -->
               </ion-button>
               <ion-label>{{ feature.name }}</ion-label>
@@ -133,7 +135,6 @@ import {
   IonListHeader,
   IonItemGroup,
   IonThumbnail,
-  IonIcon,
 } from "@ionic/vue";
 
 export default defineComponent({
@@ -155,7 +156,6 @@ export default defineComponent({
     IonListHeader,
     IonItemGroup,
     IonThumbnail,
-    IonIcon,
   },
 
   setup() {
@@ -174,22 +174,22 @@ export default defineComponent({
       accounts: [
         {
           id: 1,
-          accountNumber: 123467890,
+          accountNumber: 321234124,
           balance: 10000,
         },
         {
           id: 4,
-          accountNumber: 1234567009,
+          accountNumber: 514324124,
           balance: 40000,
         },
         {
           id: 2,
-          accountNumber: 12345670009,
+          accountNumber: 324124324314,
           balance: 20000,
         },
         {
           id: 3,
-          accountNumber: 1234567800,
+          accountNumber: 4124234124124,
           balance: 30000,
         },
       ],
@@ -276,7 +276,7 @@ ion-content {
         font-weight: 700;
       }
     }
-    
+
     // p.acc-amt {
     //   ion-text {
     //     margin: 1rem 0;
@@ -370,8 +370,6 @@ ion-item-group {
         transform: translateY(25%);
       }
     }
-    
   }
-
 }
 </style>
